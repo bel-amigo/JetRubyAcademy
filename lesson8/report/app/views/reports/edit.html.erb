@@ -1,0 +1,16 @@
+<h1>Оценка отчёта</h1>
+<%= form_with(model: @report, url: report_path(@report), method: :patch) do |form| %>
+  <!-- Existing form fields -->
+
+  <%= form.label :grade %>
+  <%= form.select :grade, options_for_select(['A', 'B', 'C', 'D', 'E', 'FX', 'F']) %>
+
+  <br>
+  <%= form.submit "Сохранить", onclick: "redirectToReportsPage();" %>
+<% end %>
+
+<script>
+    function redirectToReportsPage() {
+        window.location.href = "<%= reports_path %>";
+    }
+</script>

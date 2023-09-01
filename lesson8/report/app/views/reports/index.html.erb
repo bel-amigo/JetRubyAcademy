@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Архив отчётов службы разведки галактической империи</h1>
+
+<div id="reports">
+  <% @reports.each do |report| %>
+    <p> <b>Название: </b> <%= report.title %>
+
+    <p>
+      <% user = User.find(report.user_id) %>
+      <b>Автор: </b><%= user.first_name + " " + user.last_name %>
+    </p>
+    <p> <b>Отчёт: </b> <%= report.description %>
+      <% if report.edited %>
+      <p> <b>Оценка</b> <%= report.grade %> </p>
+    <% else %>
+      <br>
+      <%= link_to 'Поставить оценку', edit_report_path(report) %>
+    <% end %>
+    <hr>
+  <% end %>
+</div>
+
+<%= link_to "Создать новый отчёт", new_report_path %>

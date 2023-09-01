@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @report %>
+
+<div>
+<!--  <%#= link_to "Отредактировать отчёт", edit_report_path(@report) %> |-->
+  <% if @report.edited %>
+    <p> <%= @report.grade %> </p>
+  <% else %>
+    <%= link_to 'Поставить оценку', edit_report_path(@report) %>
+  <% end %>
+  <%= link_to "Назад к списку отчётов", reports_path %>
+
+  <%= button_to "Удалить этот отчёт", @report, method: :delete %>
+</div>
